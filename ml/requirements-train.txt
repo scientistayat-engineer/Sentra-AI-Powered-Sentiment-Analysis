@@ -1,0 +1,6 @@
+# Only needed on your computer to train / evaluate the model.
+-r ../requirements.txt
+pandas>=2.2
+matplotlib>=3.9
+seaborn>=0.13
+datasets>=3.0

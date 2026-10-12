@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.vercel/
+.DS_Store
+ml/data/
+ml/artifacts/*.png.tmp
+*.log
+# Firebase / Google private credentials must NEVER be committed
+serviceAccount*.json
+*-firebase-adminsdk-*.json

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Sentra – AI Sentiment Analysis for customer feedback</title>
+<meta name="description" content="Paste a review or comment and Sentra tells you if it is positive, negative or neutral, and which words decided it.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav aria-label="Main"><div class="glass">
+  <a class="logo" href="index.html"><span class="orb"></span>Sentra</a>
+  <div class="links"><a href="index.html#how">How it works</a><a href="index.html#model">Model</a><a href="dashboard.html">Dashboard</a></div>
+  <div class="nav-actions" id="nav-actions"></div>
+</div></nav>
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <span class="pill glass"><b></b>Machine learning, not guesswork</span>
+    <h1>Every review has a mood. Sentra finds it.</h1>
+    <p class="lead">Paste any customer comment and see in a second whether it is positive, negative or neutral, and which words decided it.</p>
+    <div class="cta-row"><a class="btn" href="#analyzer">Try it now</a><a class="btn ghost" href="dashboard.html">Open dashboard</a></div>
+  </div>
+  <div class="glass az" id="analyzer">
+    <h2>What does this text feel like?</h2>
+    <p class="sub">Type a review or pick a sample. Press Ctrl+Enter to analyze.</p>
+    <label for="txt" class="sr">Text to analyze</label>
+    <textarea id="txt" maxlength="1000" placeholder="The delivery was fast and the quality is amazing…"></textarea>
+    <div class="hl" id="hl" role="button" tabindex="0" aria-label="Analyzed text. Click to edit."></div>
+    <div class="row">
+      <div class="chips">
+        <button class="chip" data-s="Absolutely loved it! The quality is amazing and delivery was super fast.">😊 Positive</button>
+        <button class="chip" data-s="Terrible experience. The product broke in two days and support never replied.">😞 Negative</button>
+        <button class="chip" data-s="The package arrived on Tuesday. It is a black box with a manual inside.">😐 Neutral</button>
+      </div>
+      <span id="count">0 / 1000</span>
+    </div>
+    <div class="actions"><button class="btn" id="go">Analyze sentiment</button><button class="btn ghost" id="clr">Clear</button></div>
+    <div class="alert err" id="err" role="alert"></div>
+    <div class="result" id="res" aria-live="polite">
+      <div class="rt"><span class="face" id="face" aria-hidden="true"></span><div><h3 id="lbl"></h3><small id="conf"></small></div></div>
+      <div class="bars3">
+        <div>Positive <b id="val-Positive"></b><span><i id="bar-Positive" style="background:var(--pos)"></i></span></div>
+        <div>Neutral <b id="val-Neutral"></b><span><i id="bar-Neutral" style="background:var(--neu)"></i></span></div>
+        <div>Negative <b id="val-Negative"></b><span><i id="bar-Negative" style="background:var(--neg)"></i></span></div>
+      </div>
+    </div>
+    <p class="hint" id="hint"></p>
+  </div>
+</div></header>
+
+<div class="tick" aria-hidden="true"><div class="tk" id="tk"></div></div>
+
+<section id="how"><div class="wrap">
+  <div class="hd"><h2>From a sentence to a verdict</h2><p>Four steps run every time you press Analyze.</p></div>
+  <div class="pipe">
+    <div class="pp"><div class="dot">✍️</div><h3>You write</h3><p>Your text is sent to the Python API.</p></div>
+    <div class="pp"><div class="dot">🧹</div><h3>We clean it</h3><p>Lowercasing, links and mentions removed, negations kept.</p></div>
+    <div class="pp"><div class="dot">🧠</div><h3>Model decides</h3><p>TF-IDF features feed a trained classifier.</p></div>
+    <div class="pp"><div class="dot">🔒</div><h3>Saved to you</h3><p>Signed-in users get it stored in a private history.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="hd"><h2>Made for real feedback, not demos</h2></div>
+  <div class="bento">
+    <div class="glass bt"><span class="e">🎯</span><h3>Real predictions</h3><p>Every result comes from a model trained on labelled data. Nothing is hardcoded or random.</p></div>
+    <div class="glass bt"><span class="e">🔍</span><h3>See why</h3><p>Words that pushed the result are highlighted in your text, so each verdict is easy to trust.</p></div>
+    <div class="glass bt s2"><span class="e">🔐</span><h3>Private history</h3><p>Sign in with Firebase. Only you can read your records.</p></div>
+    <div class="glass bt s4"><span class="e">📊</span><h3>A dashboard that updates itself</h3><p>Sentiment split, weekly activity, search and CSV export, straight from your saved analyses.</p></div>
+  </div>
+</div></section>
+
+<section id="model" style="padding-top:0"><div class="wrap">
+  <div class="hd"><h2>How good is the model?</h2><p>These numbers are read live from the trained model, measured on texts it never saw during training.</p></div>
+  <div class="metrics" id="metrics"></div>
+  <p class="meta-line" id="meta"></p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="glass cta"><h2>Start reading the room</h2><p>Create a free account and keep every analysis in your own history.</p><a class="btn" href="login.html?mode=signup">Create account</a></div></div></section>
+<footer><div class="wrap"><span>© 2026 Sentra. Python · scikit-learn · Firebase · Vercel</span><span>AI sentiment analysis for customer feedback</span></div></footer>
+<script type="module" src="js/analyzer.js"></script>
+</body>
+</html>

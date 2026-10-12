@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Log in – Sentra</title>
+<meta name="description" content="Log in or create a Sentra account to save your sentiment analyses.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav aria-label="Main"><div class="glass">
+  <a class="logo" href="index.html"><span class="orb"></span>Sentra</a>
+  <div class="links"><a href="index.html#how">How it works</a><a href="index.html#model">Model</a><a href="dashboard.html">Dashboard</a></div>
+  <div class="nav-actions" id="nav-actions"></div>
+</div></nav>
+<main class="wrap auth">
+  <div class="glass auth-card">
+    <h1 id="title">Welcome back</h1>
+    <p class="sub" id="sub">Log in to see your saved analyses.</p>
+    <div class="tabs" role="tablist"><button id="tab-login" role="tab" aria-selected="true" type="button">Log in</button><button id="tab-signup" role="tab" aria-selected="false" type="button">Sign up</button></div>
+    <form id="form" novalidate>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="password">Password</label><input id="password" type="password" minlength="6" placeholder="At least 6 characters" required><small>Use 6 or more characters.</small></div>
+      <div class="alert" id="msg" role="alert"></div>
+      <button class="btn" id="submit" type="submit" style="margin-top:6px">Log in</button>
+    </form>
+    <div class="divider">or</div>
+    <button class="btn ghost" id="google" type="button">Continue with Google</button>
+    <button class="link-btn" id="forgot" type="button">Forgot your password?</button>
+  </div>
+</main>
+<footer><div class="wrap"><span>© 2026 Sentra. Python · scikit-learn · Firebase · Vercel</span><span>AI sentiment analysis for customer feedback</span></div></footer>
+<script type="module" src="js/auth.js"></script>
+</body>
+</html>

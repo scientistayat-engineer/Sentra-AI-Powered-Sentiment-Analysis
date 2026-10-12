@@ -1,0 +1,9 @@
+Model: LogisticRegression(C=4)
+Dataset: TweetEval - Sentiment (SemEval-2017 Task 4)
+
+             precision    recall  f1-score   support
+Negative         0.571     0.600     0.585      3972
+Neutral          0.630     0.573     0.600      5937
+Positive         0.533     0.607     0.568      2375
+
+accuracy 0.588 | macro precision 0.578 | macro recall 0.593 | macro F1 0.584

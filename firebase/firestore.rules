@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Each user can only touch their own prediction history.
+    match /users/{userId}/predictions/{predictionId} {
+      allow read, delete: if request.auth != null && request.auth.uid == userId;
+
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly(['text', 'sentiment', 'confidence', 'scores', 'createdAt'])
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 1000
+        && request.resource.data.sentiment in ['Positive', 'Negative', 'Neutral']
+        && request.resource.data.confidence is number
+        && request.resource.data.confidence >= 0
+        && request.resource.data.confidence <= 1
+        && request.resource.data.scores is map
+        && request.resource.data.createdAt == request.time;
+
+      allow update: if false;   // history entries are immutable
+    }
+
+    // Everything else is closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
