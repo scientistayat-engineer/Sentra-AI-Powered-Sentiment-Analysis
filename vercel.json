@@ -1,19 +1,12 @@
 
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "outputDirectory": "frontend",
   "functions": {
-    "api/index.py": {
-      "includeFiles": "{backend,models}/**",
+    "index.py": {
+      "includeFiles": "{backend/**,models/**,frontend/**}",
       "maxDuration": 10
     }
   },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/index.py"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",

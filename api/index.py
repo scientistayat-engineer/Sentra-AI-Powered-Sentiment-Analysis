@@ -1,7 +1,11 @@
-"""Vercel serverless entry point. Vercel looks for a WSGI object named `app`."""
+
+"""Vercel entry point for the Sentra Flask application."""
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
 
-from backend.app.main import app  # noqa: E402,F401
+from backend.app.main import create_app
+
+app = create_app(serve_frontend=True)
